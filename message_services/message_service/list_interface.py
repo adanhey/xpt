@@ -42,6 +42,6 @@ class Message_list(Message_service_interface):
         result = self.get_request(url=url,param=data)
         return result
 
-c = Message_list()
-print(c.message_service_list().text)
+# c = Message_list()
+# print(c.message_service_list().text)
 # print(c.robots_list().text)
