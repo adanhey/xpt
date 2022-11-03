@@ -1,7 +1,7 @@
 import requests
 
 hostssd = 'https://test.iotdataserver.net'
-
+devhost = 'http://10.44.219.103'
 
 class Interface_X():
     def __init__(self):

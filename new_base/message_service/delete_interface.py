@@ -1,4 +1,4 @@
-from message_services.message_service import *
+from new_base.message_service import *
 
 class Message_delete(Message_service_interface):
     def message_service_delete(self,*args):

@@ -1,4 +1,4 @@
-from message_services.message_service import *
+from new_base.message_service import *
 
 
 class Message_list(Message_service_interface):
@@ -42,6 +42,6 @@ class Message_list(Message_service_interface):
         result = self.get_request(url=url,param=data)
         return result
 
-# c = Message_list()
+c = Message_list()
 # print(c.message_service_list().text)
 # print(c.robots_list().text)

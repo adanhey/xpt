@@ -1,5 +1,5 @@
 import base64
-from message_services.message_service import *
+from new_base.message_service import *
 from list_interface import *
 
 

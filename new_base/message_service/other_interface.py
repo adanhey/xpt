@@ -1,4 +1,4 @@
-from message_services.message_service import *
+from new_base.message_service import *
 
 
 class Message_other(Message_service_interface):
@@ -73,9 +73,9 @@ class Message_other(Message_service_interface):
         result = self.post_request(url=url,json=data)
         return result
 
-b = Message_other()
-# print(b.db_connect_test('MySQL', 'amRiYzpteXNxbDovL215c3FsLmJhc2UuaGM6NTYwNi9kYl9wbGF0X3J1bGVfZW5naW5lP3VzZVVuaWNvZGU9dHJ1ZS'
+# b = Message_other()
+# print(b.db_connect_test('Mysql', 'amRiYzpteXNxbDovL215c3FsLmJhc2UuaGM6NTYwNi9kYl9wbGF0X3J1bGVfZW5naW5lP3VzZVVuaWNvZGU9dHJ1ZS'
 #                            'ZjaGFyYWN0ZXJFbmNvZGluZz11dGYtOA==', 'root', 'Server@2014Server').text)
 # print(b.http_listen("123","1","2021-07-01 00:00:00","10086",{"content": "消息1"},"a,b").text)
 # print(b.robots_batchquery('6360e30ebf578c6b0ac41a0a').text)
-print(b.robot_debind('6360e30ebf578c6b0ac41a0a').text)
+# print(b.robot_debind('6360e30ebf578c6b0ac41a0a').text)
