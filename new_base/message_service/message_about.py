@@ -57,8 +57,8 @@ def cc():
     print(time.time())
     # print(b.message_notice().text)
     print(time.time(),
-        b.message_data('alarm',pagination=2, startTime='2022-06-02 00:00:00', offset=None, criticalId=None, page=None, pageSize=100,
-                       endTime='2022-11-03 00:00:00', filter=None, orderBy=None).text)
+        b.message_data('alarm',pagination=1010, startTime=None, offset=None, criticalId='864a19da0', page=100, pageSize=None,
+                       endTime=None, filter=None, orderBy=None).text)
 thread1 = threading.Thread(name='t1', target=cc(), args=())
 thread2 = threading.Thread(name='t2', target=cc(), args=())
 thread3 = threading.Thread(name='t3', target=cc(), args=())
