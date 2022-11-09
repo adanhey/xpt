@@ -1,5 +1,5 @@
 import hashlib
-
+import jsonpath
 from new_base.resourcesync_service import *
 import base64
 from hashlib import *
@@ -31,7 +31,7 @@ class Control_resourcesync(Resourcesync_service_interface):
             #             "sendContent": "2"
             #         }
             #     ]
-            # }
+            # },
             "cacheType": cacheType,
             "sendType": sendType,
             "readType": readType
@@ -54,7 +54,16 @@ class Control_resourcesync(Resourcesync_service_interface):
 b = Control_resourcesync()
 # 查询控制量下发记录
 # print(b.get_control_result().text)
+senddata = {
+    "gatewayIdentifier": "10085",
+    "deviceName": "设备ABC",
+    "data": [{
+        "measurementIdentifier": "111",
+        "propertyName": "温度",
+        "sendContent": "2"
+    }]
+}
 # 控制量下发
-# print(b.distribute_control(1).text)
+print(b.distribute_control(2, 1, 1, senddata).text)
 # 控制量下发结果更新
-print(b.update_control_result("123", 123456541532).text)
+# print(b.update_control_result("123", 123456541532).text)

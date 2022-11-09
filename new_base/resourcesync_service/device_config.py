@@ -18,8 +18,19 @@ class Device_config(Resourcesync_service_interface):
         result = self.get_request(url=url, param=data)
         return result
 
-    def distribution_config(self, gatewayDeviceIdentifier, syncId, headerList=None, recycleList=None,
+    def distribution_config(self, gatewayDeviceIdentifier, syncId=None, headerList=None, recycleList=None,
                             collectModelIdentifier=None, collectModelVersion=None, fileId=None):
+        '''
+        给网关设备下发配置
+        :param gatewayDeviceIdentifier:网关设备标识
+        :param syncId:配置同步id(此次操作的唯一id)
+        :param headerList:当文件id不为空时，必填
+        :param recycleList:配置标识
+        :param collectModelIdentifier:采集模板标识(非回收操作必填)
+        :param collectModelVersion:采集模板的版本号(非回收操作必填)
+        :param fileId:文件id，有值时直接取文件进行配置下发
+        :return:
+        '''
         url = '%s/api/resourcesync/config' % self.host
         data = {
             "collectModelIdentifier": collectModelIdentifier,
@@ -46,7 +57,7 @@ class Device_config(Resourcesync_service_interface):
         result = self.patch_request(url=url, json=data)
         return result
 
-    def config_send_module(self,collectModelIdentifier,gatewayDeviceIdentifier):
+    def config_send_module(self, collectModelIdentifier, gatewayDeviceIdentifier):
         url = '%s/api/resourcesync/config/sendModule' % self.host
         data = {
             "collectModelIdentifier": collectModelIdentifier,
@@ -64,18 +75,30 @@ class Device_config(Resourcesync_service_interface):
                 }]
             }]
         }
+        result = self.patch_request(url=url, json=data)
+        return result
 
 
 b = Device_config()
 # 网关配置下发记录查询
 # print(b.get_distribution_result().text)
 # 网关配置下发
-# print(b.distribution_config("1", "2").text)
+header = [
+    {
+        "cfgIdentifier1": "1",
+        "versionNo1": "2",
+        "deviceIdentifier": "aaa"
+    },
+]
+print(b.distribution_config("10085", syncId='cvv',
+                            collectModelIdentifier='125', collectModelVersion='124').text)
 # 网关配置下发结果更新
-# bddd = [{
-#     "module": "eventsvr",
-#     "deviceIdentifier": "aaa",
-#     "status": 1,
-#     "desc": "edge update config ok!"
-#   }]
-# print(b.update_config_reuslt("812400005255",bddd,"123","100",1625121523000).text)
+bddd = [{
+    "module": "eventsvr",
+    "deviceIdentifier": "aaa",
+    "status": 1,
+    "desc": "edge update config ok!"
+}]
+# print(b.update_config_reuslt("12300000000000",bddd,"1589801824482029569","100",1625121523000).text)
+# 网关配置增量下发
+# print(b.config_send_module("123","10085").text)
